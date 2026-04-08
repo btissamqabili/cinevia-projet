@@ -8,136 +8,40 @@
 </head>
 <body>
    <header class="navbar">
-    <div class="logo"> <span>Cinevia</span></div>
-    <nav class="menu">
-        <a href="#">Acceuil</a>
-        <a href="#">Films</a>
-        <a href="#">Favoris</a>
-    </nav>
+    <div class="logo">
+  <img src="assets (images)/logocinema.png" alt="logo">
+  <span>Cinevia</span>
+</div>
+<nav class="menu">
+  <a href="#home">Acceuil</a>
+  <a href="#movies">Films</a>
+  <a href="#favorites">Favoris</a>
+</nav>
     <input type="text" placeholder="recherche...." class="search">
    </header> 
-   <section class="hero">
+  <section id="home" class="hero">
     <div class="overlay"></div>
     <div class="hero-content">
-<h1>Découvrez les mellieures films</h1>
-<p>Explorez,recherchez et ajoutez vos films préférés</p>
-<button>Explorer maintenant</button>
+  <h1>Découvrez les mellieures films</h1>
+  <p>Explorez,recherchez et ajoutez vos films préférés</p>
+  <button>Explorer maintenant</button>
     </div>
    </section>
-   <section class="movies">
-    <div class="filters">
+    <section class="filters">
         <button>Tous</button>
         <button>action</button>
         <button>comédie</button>
         <button>Drame</button>
-    </div>
+    </Section>
+    <section id="movies" class="movies">
     <h2>Films populaires</h2>
-    <div class="cards">
-        <div class="card"></div>
-        <img src="assets (images)/imgc1.png.jpg">
-        <p class="category">Action</p>
-        <h3>Jason statham</h3>
-        <button>voirs Détail</Details></button>
-    </div>
-    <div class="card">
-        <img src="assets (images)/imgc2.png.jpg">
-        <p class="category">comédie</p>
-        <h3>la vie pour de vrai</h3>
-        <button>voirs Détail</button>
-    </div>
-    <div class="card">
-        <img src="assets (images)/imgc3.png.jpg">
-        <p class="category">comédie</p>
-        <h3>la vie pour de vrai</h3>
-        <button>voirs Détail</button>
-    </div>
-    <div class="card">
-        <img src="assets (images)/img4.png.jpg">
-        <p class="category">Action</p>
-        <h3>Yumanji</h3>
-        <button>voirs Détail</button>
-    </div>
-      <div class="card">
-        <img src="assets (images)/img5.png.jpg">
-        <p class="category">Action</p>
-        <h3>Rambo 6 The last stand</h3>
-        <button>voirs Détail</button>
-    </div>
-      <div class="card">
-        <img src="assets (images)/img6.png.jpg">
-        <p class="category">Action</p>
-        <h3>The Expendables 3</h3>
-        <button>voirs Détail</button>
-    </div>
-      <div class="card">
-        <img src="assets (images)/imgc7.png.jpg">
-        <p class="category">drame</p>
-        <h3>FREE  FALL</h3>
-        <button>voirs Détail</button>
-    </div>
-    <div class="card">
-        <img src="assets (images)/imgc7.png.jpg">
-        <p class="category">comédie</p>
-        <h3>Docobu 3</h3>
-        <button>voirs Détail</button>
-    </div>
-    <div class="card">
-        <img src="assets (images)/imgc8.png.jpg">
-        <p class="category">drame</p>
-        <h3>Before Night Falls</h3>
-        <button>voirs Détail</button>
-    </div>
-         <div class="card">
-        <img src="assets (images)/imgc9.png.jpg">
-        <p class="category">drame</p>
-        <h3>the train of love</h3>
-        <button>voirs Détail</button>
-    </div>
-     </div>
-         <div class="card">
-        <img src="assets (images)/imgc10.png.webp">
-        <p class="category">Action</p>
-        <h3>Extraction 3</h3>
-        <button>voirs Détail</button>
-    </div>
-     </div>
-         <div class="card">
-        <img src="assets (images)/imgc11.png.jpg">
-        <p class="category">drame</p>
-        <h3>un ticket pour deux</h3>
-        <button>voirs Détail</button>
-    </div>
-     </div>
-         <div class="card">
-        <img src="assets (images)/imgc12.jpg">
-        <p class="category">drame</p>
-        <h3>Inception</h3>
-        <button>voirs Détail</button>
-    </div>
-     </div>
-         <div class="card">
-        <img src="assets (images)/img13.png.jpg">
-        <p class="category">drame</p>
-        <h3> Fast & Furious 9</h3>
-        <button>voirs Détail</button>
-    </div>
-             <div class="card">
-        <img src="assets (images)/img14.png.jpg">
-        <p class="category">drame</p>
-        <h3> Mission: Impossible-Fallout</h3>
-        <button>voirs Détail</button>
-    </div>
-         <div class="card">
-        <img src="assets (images)/img15.png.jpg">
-        <p class="category">drame</p>
-        <h3>Gladiator</h3>
-        <button>voirs Détail</button>
-    </div>
-        <div class="card">
-        <img src="assets (images)/img16.png.jpg">
-        <p class="category">drame</p>
-        <h3>Gladiator</h3>
-        <button>voirs Détail</button>
-    </div>
-   </section></body>
+    <div class="grid" id="movie-container">   
+   </section>
+<section id="favorites" class="Favorites">
+    <h2>Favoris</h2>
+    <footer>
+  <p>© 2025 Cinevia-Tous droits réservés</p>
+</footer>
+<script src="index.js"></script>
+</body>
 </html>
