@@ -9,7 +9,7 @@
 <body>
    <header class="navbar">
     <div class="logo">
-  <img src="assets (images)/logocinema.png" alt="logo">
+  <img src="images/logocinema.png" alt="logo">
   <span>Cinevia</span>
 </div>
 <nav class="menu">
@@ -35,13 +35,24 @@
     </Section>
     <section id="movies" class="movies">
     <h2>Films populaires</h2>
-    <div class="grid" id="movie-container">   
+    <div class="grid" id="movie-container"></div>   
    </section>
 <section id="favorites" class="Favorites">
     <h2>Favoris</h2>
-    <footer>
-  <p>© 2025 Cinevia-Tous droits réservés</p>
+</section>
+
+<footer>
+  <p>© 2025 Cinevia - Tous droits réservés</p>
 </footer>
+<div id="modal" class="modal">
+  <div class="modal-content">
+    <span class="close">&times;</span>
+    <img id="modal-img" src="" alt="">
+    <h2 id="modal-title"></h2>
+    <p id="modal-desc"></p>
+    <button id="add-fav">Ajouter aux favoris</button>
+  </div>
+</div>
 <script src="index.js"></script>
 </body>
 </html>
