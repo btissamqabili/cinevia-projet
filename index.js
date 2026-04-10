@@ -69,42 +69,52 @@ const films=[{name:"no rules,no fear,just impact",
 
 const container = document.getElementById("movie-container");
 
-films.forEach((film) => {
-  const card = createCard(film);
-  container.appendChild(card);
-});
+const popup = document.getElementById("popup");
+const popupImg = document.getElementById("popup-img");
+const popupTitle = document.getElementById("popup-title");
+const popupDesc = document.getElementById("popup-desc");
+const popupCategory = document.getElementById("popup-category");
+const closeBtn = document.getElementById("close");
+
+function displayFilms(filmsList) {
+
+  container.innerHTML = "";
+
+  filmsList.forEach((film) => {
+    const card = createCard(film);
+    container.appendChild(card);
+  });
+}
+
 function createCard(film) {
 
   const card = document.createElement("div");
   card.classList.add("card");
 
-
   const img = document.createElement("img");
   img.src = film.image;
-  img.alt = film.name;
 
   const title = document.createElement("h3");
   title.textContent = film.name;
 
   const desc = document.createElement("p");
   desc.textContent = film.description;
-  desc.classList.add("desc")
+  desc.classList.add("desc");
+
   const category = document.createElement("span");
   category.textContent = film.category;
   category.classList.add("category");
 
   const btn = document.createElement("button");
   btn.textContent = "Voir plus";
-
   btn.addEventListener("click", () => {
-  modal.style.display = "flex";
+    popup.style.display = "flex";
 
-  modalImg.src = film.image;
-  modalTitle.textContent = film.name;
-  modalDesc.textContent = film.description;
-
-  currentFilm = film;
-});
+    popupImg.src = film.image;
+    popupTitle.textContent = film.name;
+    popupDesc.textContent = film.description;
+    popupCategory.textContent = film.category;
+  });
 
   card.appendChild(img);
   card.appendChild(title);
@@ -114,21 +124,122 @@ function createCard(film) {
 
   return card;
 }
-const modal = document.getElementById("modal");
-const modalImg = document.getElementById("modal-img");
-const modalTitle = document.getElementById("modal-title");
-const modalDesc = document.getElementById("modal-desc");
-const closeBtn = document.querySelector(".close");
-const addFavBtn = document.getElementById("add-fav");
 
-let currentFilm = null;
 closeBtn.addEventListener("click", () => {
-  modal.style.display = "none";
+  popup.style.display = "none";
 });
-const favorites = [];
+const favBtn = document.getElementById("fav-btn");
 
-addFavBtn.addEventListener("click", () => {
-  favorites.push(currentFilm);
-  alert("Ajouté aux favoris !");
-  modal.style.display = "none";
+favBtn.addEventListener("click", () => {
+  let favoris = JSON.parse(localStorage.getItem("favoris")) || [];
+  const filmData = {
+    title: popupTitle.textContent,
+    image: popupImg.src,
+    description: popupDesc.textContent,
+    category: popupCategory.textContent
+  };
+  const exists = favoris.some(f => f.title === filmData.title);
+
+ if (!exists) {
+  favoris.push(filmData);
+  localStorage.setItem("favoris", JSON.stringify(favoris));
+  displayFavorites(); 
+  alert("Ajouté aux favoris ❤️");
+  } else {
+    alert("Déjà dans favoris ⚠️");
+  }
+});
+function displayFavorites() {
+
+  const favContainer = document.getElementById("favorites-container");
+  let favoris = JSON.parse(localStorage.getItem("favoris")) || [];
+
+  favContainer.innerHTML = "";
+
+  favoris.forEach((film, index) => {
+
+    const card = document.createElement("div");
+    card.classList.add("card"); 
+
+    const img = document.createElement("img");
+    img.src = film.image;
+
+    const title = document.createElement("h3");
+    title.textContent = film.title;
+
+    const category = document.createElement("span");
+    category.textContent = film.category;
+    category.classList.add("category");
+
+    const desc = document.createElement("p");
+    desc.textContent = film.description;
+    desc.classList.add("desc");
+    const deleteBtn = document.createElement("button");
+    deleteBtn.textContent = "Supprimer ❌";
+
+    deleteBtn.addEventListener("click", () => {
+      removeFromFavorites(index);
+    });
+
+    card.appendChild(img);
+    card.appendChild(title);
+    card.appendChild(category);
+    card.appendChild(desc);
+    card.appendChild(deleteBtn);
+
+    favContainer.appendChild(card);
+  });
+}
+displayFavorites();
+function removeFromFavorites(index) {
+
+  let favoris = JSON.parse(localStorage.getItem("favoris")) || [];
+
+  favoris.splice(index, 1); 
+
+  localStorage.setItem("favoris", JSON.stringify(favoris));
+
+  displayFavorites(); 
+}
+function filterFilms(category) {
+
+  if (category === "all") {
+    displayFilms(films);
+  } else {
+    const filtered = films.filter(film => film.category === category);
+    displayFilms(filtered);
+  }
+}
+window.addEventListener("DOMContentLoaded", () => {
+
+  const buttons = document.querySelectorAll(".filter-btn");
+
+  buttons.forEach(btn => {
+    btn.addEventListener("click", () => {
+
+      const cat = btn.dataset.cat;
+      filterFilms(cat);
+
+    });
+  });
+
+});
+const filterButtons = document.querySelectorAll(".filter-btn");
+
+filterButtons.forEach(btn => {
+  btn.addEventListener("click", () => {
+    const category = btn.getAttribute("data-cat");
+    filterFilms(category);
+  });
+});
+const searchInput = document.querySelector(".search");
+
+searchInput.addEventListener("input", () => {
+  const value = searchInput.value.toLowerCase();
+
+  const filtered = films.filter(film =>
+    film.name.toLowerCase().includes(value)
+  );
+
+  displayFilms(filtered);
 });

@@ -27,30 +27,41 @@
   <button>Explorer maintenant</button>
     </div>
    </section>
-    <section class="filters">
-        <button>Tous</button>
-        <button>action</button>
-        <button>comédie</button>
-        <button>Drame</button>
-    </Section>
+   <section class="filters">
+  <button class="filter-btn" data-cat="all">Tous</button>
+<button class="filter-btn" data-cat="action">Action</button>
+<button class="filter-btn" data-cat="drame">Drame</button>
+<button class="filter-btn" data-cat="comédie">Comédie</button>
+   </section>
     <section id="movies" class="movies">
     <h2>Films populaires</h2>
     <div class="grid" id="movie-container"></div>   
    </section>
 <section id="favorites" class="Favorites">
-    <h2>Favoris</h2>
+ <h2>Mes Favoris ❤️</h2>
+<div id="favorites-container"></div>
 </section>
 
 <footer>
   <p>© 2025 Cinevia - Tous droits réservés</p>
 </footer>
-<div id="modal" class="modal">
-  <div class="modal-content">
-    <span class="close">&times;</span>
-    <img id="modal-img" src="" alt="">
-    <h2 id="modal-title"></h2>
-    <p id="modal-desc"></p>
-    <button id="add-fav">Ajouter aux favoris</button>
+<div id="popup" class="popup">
+  <div class="popup-box">
+
+    <span id="close">&times;</span>
+
+    <div class="popup-left">
+      <img id="popup-img" src="">
+    </div>
+
+    <div class="popup-right">
+      <h2 id="popup-title"></h2>
+      <span id="popup-category" class="category"></span>
+      <p id="popup-desc"></p>
+
+      <button id="fav-btn">❤️ Ajouter aux favoris</button>
+    </div>
+
   </div>
 </div>
 <script src="index.js"></script>
